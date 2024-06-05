@@ -1,0 +1,92 @@
+---
+title: A template for the *arxiv* style
+authors:
+  - name: David S. Hippocampus
+    thanks: Use footnote for providing further information about author (webpage, alternative address)---*not* for acknowledging funding agencies. Optional.
+    department: Department of Computer Science
+    affiliation: Cranberry-Lemon University
+    location: Pittsburgh, PA 15213
+    email: hippo@cs.cranberry-lemon.edu
+  - name: Elias D. Striatum
+    department: Department of Electrical Engineering
+    affiliation: Mount-Sheikh University
+    location: Santa Narimana, Levand
+    email: stariate@ee.mount-sheikh.edu
+abstract: |
+  Enter the text of your abstract here.
+keywords:
+  - blah
+  - blee
+  - bloo
+  - these are optional and can be removed
+bibliography: references.bib
+biblio-style: unsrt
+output: rticles::arxiv_article
+---
+
+# CONCEPTOS FUNDAMENTALES
+  <p>Un sistema es cualquier objeto cuyas propiedades se desean estudiar. De acuerdo con
+esta definición, cualquier fuente potencial de datos puede considerarse que es un
+sistema.</p>
+ <p> Un experimento es el proceso de extraer datos de un
+sistema sobre el cual se ha ejercido una acción externa.</p>
+ <p> Un modelo es una representación de un sistema desarrollada para "un
+propósito específico"</p>
+<p>  En la mayoría de los casos los modelos no pueden resolverse analíticamente y deben
+estudiarse con ayuda del ordenador, aplicando métodos numéricos. Este experimento
+numérico realizado sobre el modelo matemático recibe el nombre de simulación.</p>
+
+<p> G.J. Klir propuso una clasificación del conocimiento en cuatro niveles, útil en modelado y simulación:</p>
+
+-1. Nivel 0 - Fuente: Identifica la porción del mundo a modelar.
+-2. Nivel 1 - Datos: Contiene medidas y observaciones del sistema fuente.
+-3. Nivel 2 - Generación: Recrea los datos mediante representaciones compactas.
+-4. Nivel 3 - Estructura: Describe cómo recrear los datos en términos de componentes interconectados.
+
+<p>Esta clasificación permite definir tres tipos de problemas: análisis, inferencia y diseño, cada uno implicando un movimiento entre los niveles de conocimiento del sistema. El análisis busca entender el comportamiento del sistema, la inferencia busca conocer su estructura a partir de observaciones y el diseño investiga estructuras alternativas. </p>
+
+<p>La inferencia y el diseño requieren ascender en los niveles de conocimiento, mientras que el análisis solo expone lo que ya está implícito. La ingeniería inversa combina elementos de inferencia y diseño para observar un sistema existente, inferir su comportamiento y diseñar una estructura alternativa.</p>
+<p> El sistema fuente, la entidad que se desea modelar, proporciona datos observables que constituyen la base del conocimiento en el modelado y simulación. A través de marcos experimentales, se recopilan medidas relevantes para los objetivos del estudio. Estos marcos trasladan los objetivos a condiciones experimentales precisas. Para convertir los objetivos en marcos experimentales, se deben definir medidas de salida y variables, siendo el transductor del marco el responsable de calcular las medidas a partir de las variables. </p>
+
+<p>El modelo del sistema, que puede estar en niveles de generación o estructura, se ejecuta mediante un simulador, capaz de generar el comportamiento especificado en el modelo. La validez y corrección del modelo y simulador se refieren a la capacidad de representar fielmente el comportamiento del sistema y ejecutar correctamente las instrucciones del modelo, respectivamente. </p>
+
+<p>El proceso de modelado implica simplificar el modelo base para adaptarlo a las limitaciones del simulador y los recursos disponibles. El modelo simplificado debe ser igualmente válido para el marco experimental específico, aunque pueda ser menos completo que el modelo base.</p>
+
+<p> Se presenta una clasificación de modelos matemáticos en función de su naturaleza determinista o estocástica, y estática o dinámica. Los modelos deterministas tienen variables de entrada conocidas en todo momento, mientras que los estocásticos incluyen variables aleatorias. Los modelos estáticos no consideran el tiempo, mientras que los dinámicos sí lo hacen. Los dinámicos se dividen en modelos de tiempo discreto, eventos discretos y tiempo continuo. Se explica cómo se simulan modelos de tiempo continuo mediante la discretización del tiempo y se proporciona un ejemplo de cómo se realiza esta transformación.</p>
+
+
+<p> Los modelos de tiempo discreto se caracterizan por cambios de variables en intervalos de tiempo equiespaciados. Durante la simulación, el reloj avanza en pasos constantes, calculando las salidas y el estado del modelo en cada instante. Son útiles en aplicaciones como la descripción de circuitos digitales y como aproximaciones de modelos de tiempo continuo, donde el paso de tiempo está determinado por la discretización temporal.</p>
+
+
+<p>Cuando un modelo tiene un número finito de estados y sus entradas pueden tomar un número finito de valores, se puede describir su comportamiento mediante una tabla de transición/salidas. En esta tabla se indican todas las combinaciones posibles de estados y entradas, junto con las salidas y los siguientes estados correspondientes. Esta representación es común en circuitos digitales. También se puede expresar el comportamiento del modelo mediante funciones de transición de estado y de salida, donde se describe cómo se calcula el estado siguiente y la salida actual en función del estado y la entrada actuales. Estas funciones permiten calcular las trayectorias del estado y la salida conocidos el estado inicial y la trayectoria de entrada. La información de la tabla de transición/salidas puede ser expresada de forma más compacta utilizando estas funciones. Por ejemplo, el comportamiento de un biestable D puede ser representado con las funciones: el estado siguiente es igual a la entrada actual y la salida es igual al estado actual.</p>
+
+
+<p>El autómata celular es un modelo con una estructura regular, compuesto por células idénticas conectadas según un patrón espacial y regido por un conjunto de reglas uniformes. Von Neumann y Ulam lo usaron originalmente para describir la autorreproducción biológica. Las células, organizadas en una red unidimensional, bidimensional o multidimensional, influyen en sus vecinas según su proximidad geométrica. Cada célula puede estar en dos estados y recibe entradas de sus vecinas. Se pueden definir 256 reglas distintas para la transición de estados. Los autómatas celulares tienen aplicaciones en diversos campos como la biología, la química y la física, para modelar fenómenos como el crecimiento de cristales, la propagación de incendios forestales y el tráfico urbano.</p>
+
+<p>Los modelos de tiempo discreto y de eventos discretos comparten la característica de que las variables del modelo cambian solo en ciertos instantes de tiempo, permaneciendo constantes el resto del tiempo. La diferencia radica en que los modelos de tiempo discreto avanzan en pasos de tiempo equiespaciados, mientras que los de eventos discretos no tienen esta restricción y permiten intervalos de tiempo variables entre eventos. Para los modelos de eventos discretos, se necesita un calendario de eventos para registrar el momento de activación de los eventos planificados. Dos metodologías comunes para describir modelos de eventos discretos son el modelado orientado a la planificación de eventos y el modelado orientado a los procesos.</p>
+
+
+<p>El modelado de eventos discretos implica especificar qué eventos pueden ocurrir y cómo están relacionados entre sí. Se puede programar este tipo de modelo utilizando un lenguaje de programación imperativo. El algoritmo de simulación involucra rutinas de inicialización, tiempo, eventos e informes. Las rutinas gestionan la planificación y ejecución de eventos, así como el avance del tiempo y el cálculo de estadísticas. Este enfoque, aunque sencillo para modelos simples, puede volverse complejo y propenso a errores en modelos grandes. Para abordar esta complejidad, se proponen formalismos de planificación de eventos que permiten describir modelos de manera modular y jerárquica. Esto implica dividir el sistema en partes, modelarlas independientemente y luego describir cómo interactúan entre sí. Estos formalismos facilitan el desarrollo, prueba y reutilización de modelos en diferentes contextos de aplicación. El acoplamiento entre componentes puede ser modular, utilizando interfaces para la transmisión de información, o no modular, donde el estado de un componente influye directamente en otros. Un ejemplo de formalismo que facilita este modelado modular y jerárquico es DEVS (Discrete EVent system Specification).</p>
+<p>El modelado orientado a los procesos se centra en describir la circulación de entidades a través de un sistema, enfocándose en los procesos que realizan estas entidades. Surgió en la década de 1970 con el desarrollo de lenguajes de simulación para eventos discretos. Estos lenguajes traducen la descripción orientada a los procesos a una orientada a la planificación de eventos. Actualmente, se emplean entornos de simulación como AnyLogic, Arena y SIMUL8, que ofrecen interfaces intuitivas para construir modelos, instanciar módulos predefinidos y visualizar la simulación. Estos entornos permiten acceder a diferentes niveles de descripción del modelo y proporcionan herramientas para el modelado estadístico, la definición de experimentos y la análisis de resultados.</p>
+
+<p>El modelo de una oficina de atención al público ilustra las diferencias entre el modelado orientado a la planificación de eventos y el modelado orientado a los procesos. Se representa la estructura lógica del modelo, describiendo cómo se manejan los clientes que llegan a la oficina y la interacción con el empleado. Se detalla el estado del sistema y se explican los cálculos para estimar el tiempo medio de espera en cola y el número medio de clientes en espera. Se describen cuatro tipos de eventos: inicio de la simulación, llegada de un cliente, finalización del servicio a un cliente y finalización de la simulación. Además, se presenta el modelo desde la perspectiva del proceso utilizando el entorno de simulación Arena, donde se describe el flujo de los clientes a través del sistema. Se muestran los módulos utilizados y cómo se configuran, destacando que Arena calcula automáticamente medidas estadísticas del sistema y genera informes al finalizar la simulación.</p>
+
+<p> a continuacion  detalla los pasos comunes en un estudio de simulación usando modelos de eventos discretos estocásticos. Los pasos son los siguientes: </p>
+
+-1. Deﬁnición del problema.
+-2. Planiﬁcación del proyecto.
+-3. Deﬁnición del sistema.
+-4. Formulación conceptual del modelo.
+-5. Diseño preliminar del experimento.
+-6. Preparación de los datos de entrada.
+-7. Traducción del modelo a código ejecutable.
+-8. Veriﬁcación y validación.
+-9. Diseño experimental ﬁnal.
+-10. Experimentación.
+-11. Análisis e interpretación.
+-12. Documentación y actuación (si procede).
+
+<p>Se introduce la "Regla 40,20,40" que sugiere cómo distribuir el esfuerzo y el tiempo en el proyecto de simulación, dividiendo el enfoque entre la comprensión inicial del problema y el diseño del experimento, la programación del modelo y finalmente la verificación, validación, diseño y realización del experimento, análisis de los resultados y documentación.</p>
+
+
+
